@@ -4,7 +4,6 @@ include 'comments.inc.php';
 include_once('dbh.inc.php');
 include_once ('config/config.php');
 
-session_start();
 if(!isset($_SESSION['login']))
 {
     header('Location: index.php');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 24, 2020 at 12:34 PM
+-- Generation Time: Aug 24, 2020 at 12:54 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `forum`
 --
+CREATE DATABASE IF NOT EXISTS `forum` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `forum`;
 
 -- --------------------------------------------------------
 
@@ -42,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`cid`, `uid`, `tid`, `date`, `message`) VALUES
+INSERT DELAYED INTO `comments` (`cid`, `uid`, `tid`, `date`, `message`) VALUES
 (4, 14, 5, '2020-07-20 15:02:05', 'ggggggfggggggyftygty'),
 (79, 5, 4, '2020-07-28 15:16:31', ''),
 (106, 7, 6, '2020-08-07 17:10:10', 'skjdflksdjflksdjflksdjflksdjflksdjflksdjl'),
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `conversations` (
 -- Dumping data for table `conversations`
 --
 
-INSERT INTO `conversations` (`id`, `nom`, `id_auteur`, `id_topic`, `creation`, `verrouillage`, `epingle`) VALUES
+INSERT DELAYED INTO `conversations` (`id`, `nom`, `id_auteur`, `id_topic`, `creation`, `verrouillage`, `epingle`) VALUES
 (1, 'Premiere conversation', 1, 1, '2019-12-17 19:39:41', 1, 1),
 (2, 'Seconde conversation Ã©ditÃ©e', 1, 1, '2019-12-17 20:13:15', 1, 1),
 (6, 'TroisiÃ¨me topic!', 1, 1, '2020-01-06 07:48:39', 0, 0),
@@ -120,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `reaction` (
 -- Dumping data for table `reaction`
 --
 
-INSERT INTO `reaction` (`reaction_id`, `content_type`, `message_id`, `user_id`) VALUES
+INSERT DELAYED INTO `reaction` (`reaction_id`, `content_type`, `message_id`, `user_id`) VALUES
 (6, 0x6c696b65, 72, 6),
 (24, 0x6c696b65, 81, 6),
 (25, 0x6469736c696b65, 79, 6),
@@ -169,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `reply` (
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`id`, `content`, `uid`, `cid`, `time`) VALUES
+INSERT DELAYED INTO `reply` (`id`, `content`, `uid`, `cid`, `time`) VALUES
 (1, 'test', 1, 2, '2020-07-22 15:05:22'),
 (2, 'dfsd ', 14, 31, '2020-07-22 15:07:20'),
 (3, 'dfsd ', 14, 31, '2020-07-22 15:07:42'),
@@ -255,19 +257,20 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `description` varchar(255) DEFAULT NULL,
   `rang_min` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1342 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1343 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `nom`, `description`, `rang_min`) VALUES
+INSERT DELAYED INTO `topics` (`id`, `nom`, `description`, `rang_min`) VALUES
 (1, 'Test', 'Description', 1),
 (1337, 'admin', '', 1337),
 (1338, 'zaef', 'ezaf', 2),
 (1339, 'ee', 'eezeze', 3),
 (1340, 'oooo', 'zzz', 3),
-(1341, 'TEST', 'TEST', 1);
+(1341, 'TEST', 'TEST', 1),
+(1342, 'hey ', 'sdfksdjflksdjfksld', 4);
 
 -- --------------------------------------------------------
 
@@ -283,15 +286,14 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `email` varchar(255) NOT NULL,
   `permission` int(10) NOT NULL DEFAULT '42',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1341 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1343 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `username`, `password`, `email`, `permission`) VALUES
-(1340, 'adrien', '$2y$12$7Mz.1AM3AeoYicq4UUgDju5IY2lTRW4cz8CGRIRinlxqloQhyrsY6', 'adrien1361@gmail.com', 42),
-(1339, 'class', '$2y$12$G.7s3P3BWt8jUz7MqxN9ROC36MgUW/NtP0WQuwjfv95nu7gcWPWHK', 'baktash.waqibeen@laplateforme.io', 1);
+INSERT DELAYED INTO `utilisateurs` (`id`, `username`, `password`, `email`, `permission`) VALUES
+(1342, 'admin', '$2y$12$GBbtyGaTGENne.QgAtt3leMLwmNIe5JhOPf8OdwMiv4jDJbDe/B92', 'baktashwaqibeen12@gmail.com', 1);
 
 --
 -- Constraints for dumped tables

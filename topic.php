@@ -2,7 +2,6 @@
 include_once ('dbh.inc.php');
 include_once ('comment.php');
 
-session_start();
 if(!isset($_SESSION['login']))
 {
     header('Location: index.php');

@@ -16,19 +16,6 @@ if (isset($_POST["submitBnt"])) {
 		$execute_request = mysqli_query($dbconnect, $request_user);
 		$ifexist = mysqli_num_rows($execute_request);
 
-		if (strlen($username) >= 5 && strlen($username) < 25 && strlen($password) > 6) {
-			echo 'success';
-		} else {
-			if (strlen($username) < 5 || strlen($username) > 25) {
-				echo 'Username must be between 5 and 25 chracters';
-			}
-
-			if (strlen($password) < 6) {
-				echo 'Password must be longer than 6 chracters';
-			}
-		}
-
-
 		// first check the database to make sure 
 		// a user does not already exist with the same username and/or email
 		$user_check_query = "SELECT * FROM utilisateurs WHERE username='$username' OR email='$email' LIMIT 1";
@@ -37,13 +24,28 @@ if (isset($_POST["submitBnt"])) {
 
 		if ($user) { // if user exists
 			if ($user['username'] === $username) {
-				array_push($errors, "Username already exists");
+				echo '<div class="error">Username already exists</div>';
 			}
 
 			if ($user['email'] === $email) {
-				array_push($errors, "email already exists");
+				echo '<div class="error">Email already exists </div>';
 			}
 		}
+
+		if (strlen($username) >= 5 && strlen($username) < 25 && strlen($password) > 6) {
+			echo 'success';
+		} else {
+			if (strlen($username) < 5 || strlen($username) > 25) {
+				echo '<div class="error">Username must be between 5 and 25 chracters </div>';
+			}
+
+			if (strlen($password) < 6) {
+				echo '<div class="error">Password must be longer than 6 chracters </div>';
+			}
+		}
+
+
+		
 
 		if ($ifexist == 0) {
 			if ($password == $confrim_password) {

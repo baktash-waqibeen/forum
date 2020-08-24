@@ -996,5 +996,7 @@ background-color: rgb(224, 210, 210);
   cursor: pointer;
 }
 
-
- 
+.error{
+    width: 100%;
+    text-align: center;
+ }

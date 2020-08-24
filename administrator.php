@@ -8,6 +8,7 @@
         include("config/config.php");
         $insert="INSERT INTO topics (nom,description,rang_min ) VALUES ('".$_POST['name']."','".$_POST['description']."',".$_POST['rang'].")";
         mysqli_query($dbconnect,$insert);
+        header('Location:topic.php');
         
     }
 

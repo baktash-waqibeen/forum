@@ -21,9 +21,8 @@ if (isset($_SESSION['login']) == true){
         <ul class="menu-links">
             <li><a href="index.php">Home</a><span id="QC-info"> </span>
             <li><a href="topic.php">Topics<span id="QC-info"></span></a></li>
-            <li><a href="membres.php">Member<span id="QC-info"></span></a></li>
             <li><a href="disconnect.php">Log out<span id=""></span></a></li>
-            <li><a href="administrator.php">Administrator.php<span id=""></span></a></li>
+            <li><a href="administrator.php">Administrator<span id=""></span></a></li>
 
 
         </ul>

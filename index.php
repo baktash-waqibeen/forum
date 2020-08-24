@@ -27,7 +27,7 @@ session_start();
     </header>
     <section id="center-of-page">
         <div class="container">
-            <h1>Hey! <br /> DO YOU WANT TO </h1>
+            <h1>Hey! <br /> DO YOU WANT </h1>
         </div>
         <a id="contact-main-page" href="connexion.php">Connect!</a>
     </section>

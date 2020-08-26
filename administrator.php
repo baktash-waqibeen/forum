@@ -1,16 +1,15 @@
 <?php
 // includ('config/config.php');
     session_start();
-    if(empty($_SESSION['id']) || $_SESSION['permission'] != "1337"){
-        // header('Location: administrators.php');
+    if(empty($_SESSION['id']) || $_SESSION['permission'] != "1"){
+        header('Location: index.php');
     }
     if(isset($_POST['click'])){
         include("config/config.php");
         $insert="INSERT INTO topics (nom,description,rang_min ) VALUES ('".$_POST['name']."','".$_POST['description']."',".$_POST['rang'].")";
         mysqli_query($dbconnect,$insert);
         header('Location:topic.php');
-        
-    }
+    }  
 
 ?>
 <!doctype html>
